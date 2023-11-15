@@ -21,7 +21,12 @@
     transition: 0.5s;
     border-bottom: 1px solid black;
 }
-
+.giohang{
+    font-size: 25px;
+    color: #fff;
+    margin-left: 20px;
+ 
+}
 .header img {
     width: auto;
     height: 60px;
@@ -126,7 +131,9 @@ form {
                 <p>Login</p>
                 <?php } ?>
             </a>
+            <a href="index.php?act=addtocart"><i class="fas fa-shopping-cart"></i></a>
         </div>
+       
     </div>
 </body>
 

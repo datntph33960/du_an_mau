@@ -14,6 +14,7 @@ include "./model/taikhoan.php";
 include "./admin/sanpham.php";
 include "./admin/danhmuc.php";
 include "view/header.php";
+if(!isset($_SESSION['mycart'])) $_SESSION['mycart']=[];
 $dsdm = loadAllDm();
 if((isset($_GET['act']))&&($_GET['act']!="")){
     $act = $_GET['act'];
@@ -34,6 +35,28 @@ if((isset($_GET['act']))&&($_GET['act']!="")){
             $listdanhmuc = loadAllDm();
             include "view/sanpham.php";
             break;
+        case 'addtocart':
+                if(isset($_POST['addtocart'])&&($_POST['addtocart'])){
+                    $id=$_POST['id'];
+                    $name=$_POST['name'];
+                    $img=$_POST['img'];
+                    $price=$_POST['price'];
+                    $soluong=1;
+                    $thanhtien=$soluong * $price;
+                    $spadd=[$id,$name,$img,$price,$soluong,$thanhtien];
+                    array_push($_SESSION['mycart'],$spadd);
+                    
+                }
+                include "view/cart/viewcart.php";
+                    break;
+        case 'delcart':
+                if(isset($_GET['idcart'])){
+                    array_splice($_SESSION['mycart'],$_GET['idcart'],1);
+                }else{
+                    $_SESSION['mycart']=[];
+                }
+                header('Location: index.php?act=addtocart');
+                    break;   
         case "sanphamct":
             if(isset($_GET['id'])&&$_GET['id']>0){
                 $sanpham = loadOneSp($_GET['id']);

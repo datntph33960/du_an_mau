@@ -30,7 +30,8 @@ if(is_array($sanpham)){
 .product-text {
     display: flex;
     flex-direction: column;
-    margin-left: 30px;
+    margin-left: 20px;
+    
 }
 
 .product-text h2 {
@@ -84,6 +85,7 @@ if(is_array($sanpham)){
     width: 1200px;
     margin: auto;
 }
+ 
 </style>
 
 <body>
@@ -103,6 +105,7 @@ if(is_array($sanpham)){
                 <?=$mota?>
             </p>
             <a href="" class="buy">Mua ngay</a>
+            <a href="index.php?act=addtocart" class="buy">Giỏ hàng</a>
         </div>
     </div>
     <script>

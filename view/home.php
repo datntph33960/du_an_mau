@@ -122,7 +122,12 @@ h1 {
     overflow: hidden;
     width: 100%;
 }
-
+.gh{
+    color:red;
+    background-color:#f7fff2;
+    border: dashed #458a5b;
+    font-size:15px;
+}
 .content-item-text b {
     color: #ff2525;
 }
@@ -224,7 +229,9 @@ function pre(){
 </div>
 <div class="content">
     <div class="content-product">
-        <?php foreach ($listsanpham as $sanpham) { 
+        <?php 
+        $i=0;
+         foreach ($listsanpham as $sanpham) { 
             extract($sanpham);
                     $detail = "index.php?act=sanphamct&id=".$id;
         echo ' <a href="'.$detail.'" class="content-item">
@@ -232,8 +239,16 @@ function pre(){
             <div class="content-item-text">
                 <h2>'.$name.'</h2>
                 <b>'.$price.'.000đ</b>
+                <form action="index.php?act=addtocart" method="post"> 
+                <input type="hidden" name="id" value="'.$id.'">
+                <input type="hidden" name="name" value="'.$name.'">
+                <input type="hidden" name="img" value="'.$img.'">
+                <input type="hidden" name="price" value="'.$price.'">
+                <input class="gh" type="submit" name="addtocart" value="Thêm giỏ hàng">
+            </form>
             </div>
         </a>';
+        $i+=1;
      } ?>
     </div>
     <div class="box-content">
@@ -245,4 +260,7 @@ function pre(){
          } ?>
     </div>
 </div>
+
+
 </div>
+
