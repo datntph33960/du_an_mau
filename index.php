@@ -10,6 +10,8 @@
 <?php
 session_start();
 include "./model/pdo.php";
+include "./model/cart.php";
+
 include "./model/taikhoan.php";
 include "./admin/sanpham.php";
 include "./admin/danhmuc.php";
@@ -57,6 +59,32 @@ if((isset($_GET['act']))&&($_GET['act']!="")){
                 }
                 header('Location: index.php?act=addtocart');
                     break;   
+         case "bill":
+                        include "./view/cart/bill.php";
+                        break;
+        case "mybill":
+                        $hienthi = ht_donhang();
+                        include "./view/cart/mybill.php";
+                        break;    
+         case "billcomfirm":
+                        if(isset($_POST['dongydathang']) && ($_POST['dongydathang'])) {
+                            $name = $_POST['name'];
+                            $address = $_POST['address'];
+                            $email = $_POST['email'];
+                            $tel = $_POST['tel'];
+                            $pttt = $_POST['pttt'];
+                            $ngaydathang = date('h:i:sa d/m/Y');
+                            $tongdonhang=tongdonhang();
+                            $idbill=insert_bill($name,$email,$address,$tel,$pttt,$ngaydathang,$tongdonhang);
+                                foreach($_SESSION['mycart'] as $cart){
+                                    insert_cart($_SESSION['user']['id'],$cart[0],$cart[2],$cart[1],$cart[3],$cart[4],$cart[5],$idbill);
+                                }
+                        }
+                        $bill=loadone_bill($idbill);
+                        $listbill=loadall_cart($idbill);
+                        unset($_SESSION['mycart']);
+                        include "./view/cart/billcomfirm.php";
+                        break;
         case "sanphamct":
             if(isset($_GET['id'])&&$_GET['id']>0){
                 $sanpham = loadOneSp($_GET['id']);

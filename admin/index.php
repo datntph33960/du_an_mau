@@ -19,6 +19,8 @@ if(isset($_POST["dangxuat"])){
 }
 include "header.php";
 include "../model/pdo.php";
+include "../model/cart.php";
+
 include "../model/thongke.php";
 include "../model/taikhoan.php";
 include "sanpham.php";
