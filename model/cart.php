@@ -51,7 +51,6 @@ function viewcart($del){
                         '.$delsp_td2.'
                 </tr>';
 }
-
 function bill_chi_tiet($listbill) {
     global $img_path;
     $tong=0;
