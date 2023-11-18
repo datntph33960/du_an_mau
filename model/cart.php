@@ -22,7 +22,6 @@ function viewcart($del){
             foreach($_SESSION['mycart'] as $cart){
                 $img=$cart[2];
                 $thanhtien=$cart[3] * $cart[4];
-                $tong=0;
                 $tong+=$thanhtien;
                 if($del ==1){
                     
@@ -95,8 +94,8 @@ function tongdonhang() {
     return $tong;
 }
 
-function insert_bill($name,$email,$address,$tel,$pttt,$ngaydathang,$tongdonhang) {
-    $sql = "insert into bill(bill_name,bill_email,bill_address,bill_tel,bill_pttt,ngaydathang,tongdonhang) values('$name','$email','$address','$tel','$pttt','$ngaydathang','$tongdonhang')";
+function insert_bill($iduser,$name,$email,$address,$tel,$pttt,$ngaydathang,$tongdonhang) {
+    $sql = "insert into bill(iduser,bill_name,bill_email,bill_address,bill_tel,bill_pttt,ngaydathang,tongdonhang) values('$iduser','$name','$email','$address','$tel','$pttt','$ngaydathang','$tongdonhang')";
     return pdo_execute_return_last($sql);
 }
 
@@ -113,7 +112,12 @@ function loadone_bill($id){
 function loadall_cart($idbill){
     $sql = "select * from cart where idbill = ".$idbill;
     $bill = pdo_query($sql);
-    return $bill;
+    return sizeof($bill);
+}
+function loadall_cart_count($idbill){
+    $sql = "select * from cart where idbill=".$idbill;
+    $sql=pdo_query($sql);
+    return sizeof($bill);
 }
 
 function ht_donhang(){
@@ -142,5 +146,29 @@ function thongke(){
     $listtk = pdo_query($sql);
     return $listtk;
 }
-
+function loadall_bill($iduser){
+    $spl="select * from bill where iduser=".$iduser;
+    $listbill=pdo_query($spl);
+    return $listbill;
+}
+function get_ttdh($n){
+        switch ($n){
+            case "0" :
+                $tt="Đơn hàng mới";
+                break;
+            case "1" :
+                $tt="Đang xử lí";
+                break;  
+            case "2" :
+                $tt="Đang giao hàng";
+                break;     
+            case "3" :
+                $tt="Đã giao hàng";
+                break;
+            default:
+                 $tt="Đơn hàng mới";
+                break;
+        }
+        return $tt;
+}
  ?>

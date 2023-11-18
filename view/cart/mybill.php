@@ -11,35 +11,26 @@
                 <th>Tống khóa đơn</th>
                 <th>Tình trạng đơn hàng</th>
             </tr>
-            <?php foreach ($hienthi as $cart){
+            <?php 
+            if(is_array($listbill)){
+              foreach ($listbill as $bill){
+                extract($bill);
+                $ttdh=get_ttdh($bill['bill_status']);
+                $countsp=loadall_cart_count($bill['id']);
                 $tong=$cart['thanhtien'];
                 $ht=$cart['tinhtrang'];
-                switch ($ht){
-                  case "0" :
-                      $tt="Đơn hàng mới";
-                      break;
-                  case "1" :
-                      $tt="Đang xử lí";
-                      break;  
-                  case "2" :
-                      $tt="Đang giao hàng";
-                      break;     
-                  case "3" :
-                      $tt="Đã giao hàng";
-                      break;
-                  default:
-                       $tt="Đơn hàng mới";
-                      break;
-              }
+                
                 echo'
                     <tr>
-                    <td>'.$cart['id'].'</td>
-                    <td>'.$cart['ngaydathang'].'</td>
-                    <td>'.$cart['soluong'].'</td>
-                    <td>'.$cart['thanhtien'].'</td>
-                    <td>'.$tt.'</td>
+                    <td>'.$bill['id'].'</td>
+                    <td>'.$bill['ngaydathang'].'</td>
+                    <td>'.$countsp.'</td>
+                    <td>'.$bill['total'].'</td>
+                    <td>'.$ttdh.'</td>
                     </tr>';
                }
+            }
+                
     ?>
           </table>
         </div>
