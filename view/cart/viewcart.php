@@ -33,7 +33,7 @@
                         $tong+=$thanhtien;
                         $delsp='<a href="index.php?act=delcart&idcart='.$i.'"><input type="button" value="Xóa" ></a>';
                        echo '<tr>
-                                    <td><img src="./Ảnh/'.$img.'" alt="" height="80px"></td>
+                                    <td><img src="./Ảnh/'.$img.'" alt=""  height="80px"></td>
                                     <td>'.$cart[1].'</td>
                                     <td>'.$cart[3].'</td>
                                     <td>'.$cart[4].'</td>
@@ -54,7 +54,7 @@
         </div>
     </div>
     <div class="row mb ">
-            <input type="submit" value="ĐỒNG Ý ĐẶT HÀNG"> <a href="index.php?act=decart"><input type="button" value="XÓA GIỎ HÀNG"></a>
+    <a href="index.php?act=bill"><input type="submit" value="ĐỒNG Ý ĐẶT HÀNG"> <a href="index.php?act=decart"><input type="button" value="XÓA GIỎ HÀNG"></a>
     </div>
     </div>
     

@@ -8,17 +8,17 @@
 </head>
 
 <body>
-    <style>
+<style>
     footer {
         display: flex;
         justify-content: space-around;
-        background-color: #212121;
+        background-color: #458a5b;
         margin-top: 40px;
         padding: 20px 0px;
     }
 
     footer .information {
-        color: rgb(150, 150, 150);
+        color: #000;
     }
 
     footer form {
@@ -43,7 +43,7 @@
         font-size: 17px;
         cursor: pointer;
         background-color: #ff2525;
-        color: #fff;
+        color: #000;
         border: none;
     }
 
@@ -68,23 +68,24 @@
     }
 
     .sub-footer h1 {
-        color: #fff;
+        color: #000;
     }
 
     .sub-footer a {
-        color: rgb(150, 150, 150);
+        color: #000;
         text-decoration: none;
         padding: 10px 0px;
         font-size: 18px;
     }
 
     .fanpage h2 {
-        color: #fff;
+        color: #000;
     }
+    
     </style>
     <footer>
         <div class="information">
-            <img src="../../Ảnh/logook.jpg" alt="" />
+            <img src="../Ảnh/logook.jpg" alt="" />
             <p>Địa chỉ:123 Nguyễn Trãi,Thanh Xuân,Hà Nội</p>
             <p>Email:knq@fpt.edu.vn</p>
             <p>SĐT:092222222222</p>

@@ -5,7 +5,7 @@ $unmae= "root";
 
 $password = "";
 
-$db_name = "duanmau2023";
+$db_name = "ngoc1";
 
 $conn = mysqli_connect($sname, $unmae, $password, $db_name);
 

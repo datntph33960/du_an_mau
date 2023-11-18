@@ -4,7 +4,7 @@ function pdo_get_connection(){
     $username = "root";
     $password = "";
     try {
-        $conn = new PDO("mysql:host=$servername;dbname=duanmau2023", $username, $password);
+        $conn = new PDO("mysql:host=$servername;dbname=ngoc1", $username, $password);
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         // echo "Connected successfully";
         return $conn;
@@ -24,6 +24,23 @@ function pdo_execute($sql){
         throw $e;
     }
     finally{
+        unset($conn);
+    }
+}
+// truy vấn nhiều dữ liệu
+function pdo_execute_return_last($sql){
+    $sql_args = array_slice(func_get_args(),1); //
+    try{
+        $conn = pdo_get_connection(); // 
+        $stmt = $conn->prepare($sql); //
+        $stmt->execute($sql_args); // 
+        return $conn->lastInsertId(); // để id tự động tăng 
+    }
+    catch(PDOException $e){
+        throw $e; // thông báo lỗi
+    }
+    finally{
+        // Đóng kết nối sau khi sử dụng
         unset($conn);
     }
 }
