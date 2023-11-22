@@ -136,7 +136,9 @@ li {
         </div>
       </div>
     </div>
-    <a href="index.php"><input class="menu-button" type="button" value="Tiếp Tục Mua Sắm"></td></a>
+    <div>
+        <a href="index.php"><input type="button" value="Tiếp Tục Mua Sắm"></td></a>
+      </div>
 
     </main>
 </script>
