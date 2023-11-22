@@ -93,6 +93,7 @@ form {
     height: 35px;
     padding-left: 8px;
     font-size: 17px;
+    border-radius: 25px;
 }
 
 .user-search .searchs {
@@ -101,6 +102,7 @@ form {
     position: absolute;
     right: 0;
     background-color:#458a5b;
+    border-radius: 25px;
 }
 
 .user-search input:focus {
