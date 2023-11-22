@@ -72,7 +72,7 @@ function bill_chi_tiet($listbill) {
             <td>'.$cart['name'].'</td>
             <td>'.$cart['price'].'</td>
             <td>'.$cart['soluong'].'</td>
-            <td>'.$cart['thanhtien'].'</td>
+            <td>'.$tong.'</td>
              </tr>';
         $i+=1;
     }
@@ -114,6 +114,19 @@ function loadall_cart($idbill){
     $bill = pdo_query($sql);
     return $bill;
 }
+function loadall_cart_count($idbill){
+    $sql = "select * from cart where idbill = ".$idbill;
+    $bill = pdo_query($sql);
+    return sizeof($bill);
+}
+function loadall_bill($iduser){
+    $sql="select * from bill where 1";
+    if($iduser>0) $spl=" AND iduser=".$iduser;
+    $spl.="order by id desc";
+    
+    $listbill=pdo_query($sql);
+    return $listbill;
+}
 
 function ht_donhang(){
     $sql = "SELECT * FROM bill JOIN cart ON bill.id = cart.idbill;";
@@ -140,6 +153,26 @@ function thongke(){
         ";
     $listtk = pdo_query($sql);
     return $listtk;
+}
+function get_ttdh($n){
+    switch($n) {
+        case 0:
+            $tt="đơn hàng mới";
+            break;
+           
+            case 1:
+                $tt="Đang xử lý";
+                break;
+            case 2:
+                $tt="Đang giao hàng";
+                break;
+            case 3:
+                $tt="Hoàn Tất";
+                break;
+            default:
+            $tt= "Đơn hàng mới";
+    }
+    return $tt;
 }
 
  ?>

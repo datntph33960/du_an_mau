@@ -100,6 +100,8 @@ form {
             <li><a href="index.php?act=listtk">Khách hàng</a></li>
             <li><a href="index.php?act=thongke">Thống kê</a></li>
             <li><a href="index.php?act=bieudo">Biểu đồ</a></li>
+            <li><a href="index.php?act=listbill">Đơn hàng</a></li>
+
 
         </ul>
         <div class="user-search">

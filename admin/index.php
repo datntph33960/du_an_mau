@@ -131,6 +131,10 @@ if(isset($_GET['act']) && $_GET['act'] != ""){
             $listthongke = loadAllThongKe();
             include "thongke/bieudo.php";
             break;
+            case 'listbill':
+                $listbill=loadall_bill(0);
+                include "bill/listbill.php";
+                break;
         default:
             include "home.php";
             break;

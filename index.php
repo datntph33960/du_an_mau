@@ -63,7 +63,7 @@ if((isset($_GET['act']))&&($_GET['act']!="")){
                         include "./view/cart/bill.php";
                         break;
         case "mybill":
-                        $hienthi = ht_donhang();
+                      
                         include "./view/cart/mybill.php";
                         break;    
          case "billcomfirm":
@@ -73,7 +73,7 @@ if((isset($_GET['act']))&&($_GET['act']!="")){
                             $email = $_POST['email'];
                             $tel = $_POST['tel'];
                             $pttt = $_POST['pttt'];
-                            $ngaydathang = date('h:i:sa d/m/Y');
+                            $ngaydathang = date('d/m/Y');
                             $tongdonhang=tongdonhang();
                             $idbill=insert_bill($name,$email,$address,$tel,$pttt,$ngaydathang,$tongdonhang);
                                 foreach($_SESSION['mycart'] as $cart){

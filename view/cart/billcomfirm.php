@@ -1,24 +1,83 @@
 <style>
-    .catalogmb{
-        margin-top:100px;
-        margin-left:30px;
-        background-color:#f7fff2;
-    }
-    table{
-        margin-top:30px;
-       
-        padding-left:20px;
 
-    }
-    box_content{
-        width: 50px;
-        padding: auto;
-        margin-left:30px;
-    }
-   
-    table img{
-        width: 100%;
-    }
+body, h1, h2, h3, p, ul, li, table {
+  margin: 0;
+  padding: 0;
+}
+
+
+.main {
+  background-color: #f8f8f8;
+}
+
+
+.boxleft {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  padding: 20px;
+  margin: 20px;
+}
+
+.mb {
+  margin-bottom: 20px;
+}
+
+.box_title {
+  background-color:  #458a5b;
+  color: #fff;
+  padding: 10px;
+}
+
+.box_content {
+  padding: 10px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+table, th, td {
+  border: 1px solid  #458a5b;
+}
+
+th, td {
+  padding: 8px;
+  text-align: left;
+}
+
+
+tr:nth-child(odd) {
+  background-color: #f2f2f2;
+}
+
+h2 {
+  color: #333;
+  font-size: 24px;
+}
+
+.menu-button {
+  background-color: #458a5b; 
+  color: #fff; 
+  padding: 10px 20px; 
+  border: none; 
+  border-radius: 5px; 
+  cursor: pointer;
+  font-size: 16px;
+  text-decoration: none;
+}
+li {
+  list-style-type: none;
+  margin-bottom: 10px;
+}
+
+@media (max-width: 768px) {
+  .boxleft {
+    margin: 10px;
+  }
+}
+
 </style>
 <main class="catalogmb ">
   <div class="boxleft">
@@ -77,7 +136,8 @@
         </div>
       </div>
     </div>
-      
+    <a href="index.php"><input class="menu-button" type="button" value="Tiếp Tục Mua Sắm"></td></a>
+
     </main>
 </script>
 

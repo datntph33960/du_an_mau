@@ -6,8 +6,28 @@
     }
     table{
         margin-top:30px;
-
+    
     }
+    th, td {
+    border: 1px solid  #458a5b;
+    padding: 8px;
+    text-align: left;
+}
+    .rowmb input[type="button"],
+    .rowmb input[type="submit"] {
+        background-color:  #458a5b;
+        color: white;
+        padding: 10px;
+        border: none;
+        cursor: pointer;
+        margin-right: 10px;
+    }
+
+    .rowmb input[type="button"]:hover,
+    .rowmb input[type="submit"]:hover {
+        background-color:  #458a5b;
+    }
+    
     
 </style>
 <div class="rowmb">

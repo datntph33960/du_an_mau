@@ -17,7 +17,7 @@
     z-index: 1;
     width: 100%;
     top: 0;
-    height: 80px;
+    height: 70px;
     transition: 0.5s;
     border-bottom: 1px solid black;
 }
@@ -115,6 +115,8 @@ form {
             <li><a href="index.php">Trang chủ</a></li>
             <li><a href="">Danh mục</a></li>
             <li><a href="">Sản phẩm</a></li>
+            <li><a href="./view/cart/mybill.php">Đơn hàng</a></li>
+
          
         </ul>
         <div class="user-search">

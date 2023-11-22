@@ -1,24 +1,81 @@
 <style>
-    .catalogmb{
-        margin-top:100px;
-        margin-left:30px;
-        background-color:#f7fff2;
-    }
-    table{
-        margin-top:30px;
-       
-        padding-left:20px;
+    .catalogmb {
+  margin-top: 100px;
+  margin-left: 30px;
+  background-color: white;
+  padding: 20px;
+}
 
-    }
-    box_content{
-        width: 50px;
-        padding: auto;
-        margin-left:30px;
-    }
-   
-    table img{
-        width: 100%;
-    }
+.boxleft {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.mb {
+  margin-bottom: 20px;
+}
+
+.box_title {
+  background-color: #458a5b;
+  color: #fff;
+  padding: 10px;
+  font-weight: bold;
+}
+
+.box_content {
+  padding: 15px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+table, th, td {
+  border: 1px solid #ddd;
+}
+
+th, td {
+  padding: 10px;
+  text-align: left;
+}
+
+th {
+  background-color: #458a5b;
+}
+
+table img {
+  width: 100%;
+  max-width: 200px; 
+  height: auto;
+}
+.menu-button {
+  background-color: #458a5b; 
+  color: #fff; 
+  padding: 10px 20px; 
+  border: none; 
+  border-radius: 5px; 
+  cursor: pointer;
+  font-size: 16px;
+  text-decoration: none;
+}
+
+.menu-button:hover {
+  background-color: #458a5b; 
+}
+
+
+.mb10 {
+  margin-bottom: 10px;
+}
+
+.mr20 {
+  margin-right: 20px;
+}
+
+
 </style>
 <main class="catalogmb ">
 <div class="boxleft">

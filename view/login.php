@@ -121,7 +121,6 @@ body{
             </div>
             <div class="register">
                 <p>Bạn không có tài khoản ?<a href="index.php?act=register">Đăng ký</a></p>
-                <p>Bạn không có tài khoản ?<a href="index.php?act=register">Đăng ký</a></p>
             </div>
         </form>
     </div>
