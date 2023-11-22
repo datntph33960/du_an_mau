@@ -19,6 +19,7 @@
 
 .form-content {
     margin: 10px 0px;
+    color:antiquewhite;
 }
 
 .row-input {
