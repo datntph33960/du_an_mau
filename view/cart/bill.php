@@ -60,6 +60,7 @@ table img {
   cursor: pointer;
   font-size: 16px;
   text-decoration: none;
+  
 }
 
 .menu-button:hover {

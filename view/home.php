@@ -16,11 +16,12 @@ body{
     text-align:center;
     position:relative;
 }
-.banner img{
-width:100%;
-height:700px;
-margin-top: 50px;
+.banner img {
+    width: 100%;
+    max-height: 500px; /* Điều chỉnh chiều cao tối đa của ảnh */
+    margin-top: 50px;
 }
+
 .pre, .next{
     cursor:pointer;
     position:absolute;
@@ -57,6 +58,8 @@ h1 {
     background-color: #f7fff2;
     height: 120px;
     margin-top: 5px;
+    border-radius: 10px;
+    
 }
 
 .intro-item {
@@ -75,89 +78,119 @@ h1 {
     margin-top: 5px;
 }
 
-.content {
-    display: flex;
-    justify-content: space-between;
-    max-width: 1200px;
-    margin: 20px auto;
-    background-color:#f7fff2;
-}
 
 .all h1 {
     text-align: center;
     margin: 15px 0px;
 }
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.content {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    padding: 50px; 
+}
 
 .content-product {
     display: flex;
     flex-wrap: wrap;
-    max-width: 900px;
+    gap: 20px;
+    
 }
 
 .content-item {
-    width: 265px;
-    height: 350px;
-    border: 1px solid rgba(0, 0, 0, 0.1);
-    margin: 10px;
-    margin-top: 25px;
-    overflow: hidden;
     text-decoration: none;
-    color: #000;
+    color: #333;
+    width: 100%;
+    max-width: 265px;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    transition: transform 0.3s ease-in-out;
+    
+}
+
+.content-item:hover {
+    transform: scale(1.05);
 }
 
 .content-item img {
-    width: 265px;
-    height: 270px;
-    object-fit: cover;
+    max-width: 100%;
+    height: auto;
+    
 }
 
 .content-item-text {
-    padding: 15px;
+    padding: 10px;
+    
 }
 
-.content-item h2 {
-    font-size: 19px;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    overflow: hidden;
-    width: 100%;
+.content-item-text h2 {
+    margin-bottom: 10px;
+    font-size: 1.2em;
+    
 }
-.gh{
-    color:red;
-    background-color:#f7fff2;
-    border: dashed #458a5b;
-    font-size:15px;
-}
+
 .content-item-text b {
-    color: #ff2525;
+    display: block;
+    font-size: 1.2em;
+    color: red;
+    margin-bottom: 10px;
+    
+}
+
+.gh {
+    background-color: #458a5b;
+    color: #fff;
+    padding: 8px 16px;
+    border: none;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.3s ease-in-out;
+    border-radius: 10px;
+}
+
+.gh:hover {
+    background-color: #333;
 }
 
 .box-content {
-    display: flex;
-    flex-direction: column;
-    width: 300px;
-    margin-top: 25px;
-    background-color: #fff;
+    width: 100%;
+    max-width: 300px;
+    margin-top: 20px;
+    background-color: #f9f9f9;
+    padding: 15px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    
 }
 
 .box-content h1 {
-    font-size: 27px;
-    margin: 10px 0px;
+    font-size: 1.5em;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #e44d26;
+    padding-bottom: 5px;
+    
 }
 
 .box-content a {
-    padding: 10px;
-    border-bottom: 1px solid #000;
+    display: block;
+    color: #333;
+    margin-bottom: 5px;
     text-decoration: none;
-    color: #000;
-    font-size: 20px;
+    transition: color 0.3s ease-in-out;
 }
 
 .box-content a:hover {
-    background-color: #000;
-    color: #fff;
-    cursor: pointer;
+    color: #e44d26;
 }
+
+
 
 </style>
 
@@ -206,7 +239,7 @@ function pre(){
     </script>
 </div>
 </div>
-</div>
+</div><br><br><br><br>
 <div class="intro">
     <div class="intro-item">
         <i class="fa-solid fa-truck"></i>
@@ -223,7 +256,7 @@ function pre(){
         <h2>Hỗ trợ khách hàng</h2>
         <p>Uy tín chất lượng cao</p>
     </div>
-</div>
+</div><br><br><br><br><br>
 <div class="all">
     <h1>Tất cả sản phẩm</h1>
 </div>

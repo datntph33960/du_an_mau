@@ -21,6 +21,7 @@
         border: none;
         cursor: pointer;
         margin-right: 10px;
+        border-radius: 10px;
     }
 
     .rowmb input[type="button"]:hover,
@@ -72,7 +73,7 @@
                 ?>
             </table>
         </div>
-    </div>
+    </div><br><br>
     <div class="row mb ">
     <a href="index.php?act=bill"><input type="submit" value="ĐỒNG Ý ĐẶT HÀNG"> <a href="index.php?act=decart"><input type="button" value="XÓA GIỎ HÀNG"></a>
     </div>

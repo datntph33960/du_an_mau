@@ -8,118 +8,130 @@
     <title>Document</title>
 </head>
 <style>
-.header {
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    background-color: #458a5b;
-    position: fixed;
-    z-index: 1;
-    width: 100%;
-    top: 0;
-    height: 70px;
-    transition: 0.5s;
-    border-bottom: 1px solid black;
-}
-.giohang{
-    font-size: 25px;
-    color: #fff;
-    margin-left: 20px;
- 
-}
-.header img {
-    width: auto;
-    height: 60px;
-    object-fit: cover;
-}
+    .header {
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        background-color: #458a5b;
+        position: fixed;
+        z-index: 1;
+        width: 100%;
+        top: 0;
+        height: 70px;
+        transition: 0.5s;
+        border-bottom: 1px solid black;
+        
+    }
 
-ul {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
+    .giohang {
+        font-size: 25px;
+        color: #fff;
+        margin-left: 20px;
 
-ul li {
-    list-style: none;
-}
+    }
 
-ul li a {
-    text-decoration: none;
-    color: #000;
-    font-size: 20px;
-    padding: 0px 15px;
-}
+    .header img {
+        width: auto;
+        height: 60px;
+        object-fit: cover;
+    }
 
-ul li a p {
-    text-decoration: none;
-    color: #000;
-    font-size: 20px;
-    padding: 0px 15px;
-}
+    ul {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
 
-ul li a:hover {
-    text-decoration: underline;
-}
+    ul li {
+        list-style: none;
+    }
 
-.user-search {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
+    ul li a {
+        text-decoration: none;
+        color: #000;
+        font-size: 20px;
+        padding: 0px 15px;
+        text-decoration: none;
+    }
 
-form {
-    position: relative;
-}
+    ul li a p {
+        text-decoration: none;
+        color: #000;
+        font-size: 20px;
+        padding: 0px 15px;
+        text-decoration: none;
+    }
 
-.user-search i {
-    font-size: 25px;
-    color: #fff;
-    margin-left: 20px;
-}
+    ul li a:hover {
+        text-decoration: underline;
+        text-decoration: none;
+        color: #fff;
+    }
 
-.user-search p {
-    float: right;
-    margin-top: 5px;
-}
+    .user-search {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
 
-.user-search a p {
-    text-decoration: none;
-    color: #000;
-    margin-left: 5px;
-}
+    form {
+        position: relative;
+    }
 
-.user-search .input {
-    width: 200px;
-    height: 35px;
-    padding-left: 8px;
-    font-size: 17px;
-    border-radius: 25px;
-}
+    .user-search i {
+        font-size: 25px;
+        color: #fff;
+        margin-left: 20px;
+    }
 
-.user-search .searchs {
-    height: 35px;
-    cursor: pointer;
-    position: absolute;
-    right: 0;
-    background-color:#458a5b;
-    border-radius: 25px;
-}
+    .user-search p {
+        float: right;
+        margin-top: 5px;
+    }
 
-.user-search input:focus {
-    outline: none;
-}
+    .user-search a p {
+        text-decoration: none;
+        color: #000;
+        margin-left: 5px;
+    }
+
+    .user-search .input {
+        width: 200px;
+        height: 35px;
+        padding-left: 8px;
+        font-size: 17px;
+        border-radius: 10px;
+    }
+
+    .user-search .searchs {
+        height: 35px;
+        cursor: pointer;
+        position: absolute;
+        right: 0;
+        background-color: #458a5b;
+        border-radius: 10px;
+        border: #fff solid;
+    }
+
+    .user-search .searchs:hover {
+        color: #fff;
+    }
+
+    .user-search input:focus {
+        outline: none;
+    }
 </style>
+
 <body>
     <div class="header">
         <ul class="menu">
-        <a href="../index.php"><img src="./Ảnh/logook.jpg"
-                    alt="" /></a>
+            <a href="index.php"><img src="./Ảnh/logook.jpg" alt="" /></a>
             <li><a href="index.php">Trang chủ</a></li>
             <li><a href="">Danh mục</a></li>
             <li><a href="">Sản phẩm</a></li>
-            <li><a href="./view/cart/mybill.php">Đơn hàng</a></li>
+            <li><a href="index.php?act=mybill">Đơn hàng</a></li>
 
-         
+
         </ul>
         <div class="user-search">
             <form action="index.php?act=sanpham" method="POST">
@@ -127,17 +139,17 @@ form {
                 <input type="submit" class="searchs" name="timkiem" value="Tìm kiếm">
             </form>
             <a href="index.php?act=login"><i class="fa-solid fa-user"></i>
-                <?php if(isset($_SESSION["user"])){
+                <?php if (isset($_SESSION["user"])) {
                     extract($_SESSION['user']);
                 ?>
-                <p><?=$user?></p>
-                <?php }  else { ?>
-                <p>Login</p>
+                    <p><?= $user ?></p>
+                <?php } else { ?>
+                    <p>Login</p>
                 <?php } ?>
             </a>
             <a href="index.php?act=addtocart"><i class="fas fa-shopping-cart"></i></a>
         </div>
-       
+
     </div>
 </body>
 

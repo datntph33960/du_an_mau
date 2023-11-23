@@ -126,7 +126,7 @@ li {
         </div>
       </div>
       <div class=" mb">
-        <div class="box_title">Chi tiết giở hàng</div>
+        <div class="box_title">Chi tiết giỏ hàng</div>
         <div class="box_content">
               <table>
                 <?php
