@@ -47,14 +47,21 @@
     height: 40px;
     font-size: 19px;
     margin: 15px 0px;
-    background-color: #000;
+    background-color: #458a5b;
     color: #fff;
     border: none;
     outline: none;
     border-radius: 5px;
     cursor: pointer;
   }
+  .row-btn input:hover {
+    background-color: #45a049; 
+  }
+
+
 </style>
+</style>
+<!-- Đơn hàng -->
 
 <body>
   <div class="row">
@@ -82,14 +89,15 @@
         <div class="row-input">
           <label>Trạng thái</label> <br>
           <select name="iddm" id="">
-            <option value="0" <?php echo $state = (int)($infobill['tinhtrang']) === 0 ? "selected" : ""; ?>>Đơn hàng mới</option>
-            <option value="1" <?php echo $state = (int)($infobill['tinhtrang']) === 1 ? "selected" : ""; ?>>Đang xử lý</option>
-            <option value="2" <?php echo $state = (int)($infobill['tinhtrang']) === 2 ? "selected" : ""; ?>>Đang giao hàng</option>
-            <option value="3" <?php echo $state = (int)($infobill['tinhtrang']) === 3 ? "selected" : ""; ?>>Đã giao hàng</option>
+            <option value="0" <?php echo $state = (int)($infobill['tinhtrang']) === 0 ? "selected" : ""; ?>>Đơn hàng mới chưa xử lý ...</option>
+            <option value="1" <?php echo $state = (int)($infobill['tinhtrang']) === 1 ? "selected" : ""; ?>>Đang xử lý ... </option>
+            <option value="2" <?php echo $state = (int)($infobill['tinhtrang']) === 2 ? "selected" : ""; ?>>Đang giao hàng ...</option>
+            <option value="3" <?php echo $state = (int)($infobill['tinhtrang']) === 3 ? "selected" : ""; ?>>Đã giao hàng ✓</option>
           </select>
         </div>
         <div class="row-btn">
           <input type="submit" name="update" value="Cập nhật">
+          <!-- bấn nút Cập Nhật chuyển sang index để xử lí -> nhảy về trang listbill.php -->
         </div>
       </form>
     </div>

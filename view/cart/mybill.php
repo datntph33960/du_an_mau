@@ -1,49 +1,59 @@
 <style>
-    /* Áp dụng margin-top cho .catalog */
+  
 .catalog {
     margin-top: 6rem;
 }
 
-/* Thiết lập kiểu cho bảng */
 table {
     width: 100%;
     border-collapse: collapse;
-    margin-top: 20px; /* Thêm khoảng cách giữa bảng và tiêu đề */
+    margin-top: 20px; 
 }
 
-/* Thiết lập kiểu cho các ô tiêu đề */
+
 th {
-    background-color: #f2f2f2; /* Màu nền xám nhạt */
+    background-color: #f2f2f2; 
     padding: 10px;
     text-align: left;
 }
 
-/* Thiết lập kiểu cho các ô dữ liệu */
+
 td {
-    border: 1px solid #ddd; /* Đường viền */
+    border: 1px solid #ddd; 
     padding: 8px;
 }
 
-/* Đặt màu nền cho các dòng chẵn */
 tr:nth-child(even) {
-    background-color: #f9f9f9; /* Màu nền xám nhẹ */
+    background-color: #f9f9f9; 
 }
 
-/* Đặt kiểu cho các liên kết */
+
 a {
     text-decoration: none;
-    color: #3498db; /* Màu xanh dương */
+    color: #3498db; 
 }
 
 a:hover {
-    text-decoration: underline; /* Gạch chân khi rê chuột qua */
+    text-decoration: underline; 
 }
-
+.custom-button {
+    background-color: #458a5b; 
+  color: #fff; 
+  padding: 10px 20px; 
+  border: none; 
+  border-radius: 5px; 
+  cursor: pointer;
+  font-size: 16px;
+  text-decoration: none;
+        }
+.custom-button:hover {
+            background-color: #45a049; 
+        }
 </style>
 <main class="catalog mb" style="margin-top: 6rem;">
     <div class="boxleft">
         <div class="mb">
-            <div class="box_title">Đơn hàng của bạn</div>
+            <div class="box_title"><h2>Đơn hàng của bạn</h2></div>
             <div class="box_content">
                 <table>
                     <tr>
@@ -61,22 +71,23 @@ a:hover {
                         $list_bill = load_list_bill($id_user);
                     }
                     // Kiểm tra xem mảng $hienthi có dữ liệu hay không
+                    //2
                     if (!empty($list_bill)) {
                         foreach ($list_bill as $cart) {
                             $tong = $cart['thanhtien'];
                             $ht = $cart['tinhtrang'];
                             switch ($ht) {
                                 case "0":
-                                    $tt = "Đơn hàng mới";
+                                    $tt = "Đơn hàng mới chờ xác nhận ... ";
                                     break;
                                 case "1":
-                                    $tt = "Đang xử lí";
+                                    $tt = "Đang xử lí ... ";
                                     break;
                                 case "2":
-                                    $tt = "Đang giao hàng";
+                                    $tt = "Đang giao hàng ... ";
                                     break;
                                 case "3":
-                                    $tt = "Đã giao hàng";
+                                    $tt = "Đã giao hàng ✓ ";
                                     break;
                                 default:
                                     $tt = "Đơn hàng mới";
@@ -90,13 +101,19 @@ a:hover {
                                     <td>' . $cart['thanhtien'] . '</td>
                                     <td>' . $tt . '</td>
                                     <td><a href="index.php?act=changestatusbill&id=' . $cart['idbill'] . '">Thanh toán</a></td>
+                                    
+
                                 </tr>';
+                                // click vào Thanh Toán nhảy sang tab changestatus
                         }
                     } else {
                         echo '<tr><td colspan="5">Không có đơn hàng nào để hiển thị.</td></tr>';
                     }
                     ?>
-                </table>
+                </table><br>
+                <div>
+                    <a href="index.php"><input class="custom-button" type="submit" value="Tiếp tục đặt hàng" name="dongydathang"></a>
+           </div>
             </div>
         </div>
     </div>

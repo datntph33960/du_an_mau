@@ -71,7 +71,20 @@ li {
   list-style-type: none;
   margin-bottom: 10px;
 }
-
+.custom-button {
+    background-color: #458a5b; 
+  color: #fff; 
+  padding: 10px 20px; 
+  border: none; 
+  border-radius: 5px; 
+  cursor: pointer;
+  font-size: 16px;
+  text-decoration: none;
+        }
+.custom-button:hover {
+            background-color: #45a049; 
+        }
+</style>
 @media (max-width: 768px) {
   .boxleft {
     margin: 10px;
@@ -84,7 +97,7 @@ li {
       <div class="mb">
         <div class="box_title"></div>
         <div class="box_content">
-           <h2>Cám ơn quý khách</h2>
+           <h2>Đặt Hàng Thành Công ✓ </h2>
         </div>
       </div>
            <?php
@@ -95,7 +108,7 @@ li {
       <div class=" mb">
         <div class="box_title">Thông tin đơn hàng</div>
         <div class="box_content">
-              <li>Mã đơn hàng : <?=$bill['id'];?></li>
+              <li>Mã đơn hàng của bạn : <?=$bill['id'];?></li>
               <li>Ngày đặt hàng : <?=$bill['ngaydathang'];?></li>
               <li>Tổng tiền : <?=$bill['tongdonhang'];?></li>
               <li>Phương thức thanh toán : <?=$bill['bill_pttt'];?></li>
@@ -137,8 +150,8 @@ li {
       </div>
     </div>
     <div>
-        <a href="index.php"><input type="button" value="Tiếp Tục Mua Sắm"></td></a>
-      </div>
+                    <a href="index.php"><input class="custom-button" type="submit" value="Tiếp Tục Mua Sắm" name="dongydathang"></a>
+           </div>
 
     </main>
 </script>
