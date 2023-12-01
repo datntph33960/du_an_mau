@@ -1,175 +1,31 @@
-<style>
-    * {
-        margin: 0;
-        padding: 0;
-        font-family: sans-serif;
-        box-sizing: border-box;
-
-    }
-</style>
 <?php
+ob_start();
 session_start();
-include "./model/pdo.php";
-include "./model/cart.php";
-
-include "./model/taikhoan.php";
-include "./admin/sanpham.php";
-include "./admin/danhmuc.php";
-include "view/header.php";
-if (!isset($_SESSION['mycart'])) $_SESSION['mycart'] = [];
-$dsdm = loadAllDm();
-if ((isset($_GET['act'])) && ($_GET['act'] != "")) {
-    $act = $_GET['act'];
-    switch ($act) {
-        case "sanpham":
-            if (isset($_POST['kyw']) && ($_POST['kyw'] != "")) {
-                $kym = $_POST['kyw'];
-            } else {
-                $kym = "";
-            }
-            if (isset($_GET['iddm']) && ($_GET['iddm']) > 0) {
-                $iddm = $_GET['iddm'];
-            } else {
-                $iddm = 0;
-            }
-            $dssp = loadAllSp("", $iddm);
-            $listsanpham = loadAllSp($kym, $iddm);
-            $listdanhmuc = loadAllDm();
-            include "view/sanpham.php";
-            break;
-        case 'addtocart':
-            if (isset($_POST['addtocart']) && ($_POST['addtocart'])) {
-                $id = $_POST['id'];
-                $name = $_POST['name'];
-                $img = $_POST['img'];
-                $price = $_POST['price'];
-                $soluong = 1;
-                $thanhtien = $soluong * $price;
-                $spadd = [$id, $name, $img, $price, $soluong, $thanhtien];
-                array_push($_SESSION['mycart'], $spadd);
-            }
-            include "view/cart/viewcart.php";
-            break;
-        case 'delcart':
-            if (isset($_GET['idcart'])) {
-                array_splice($_SESSION['mycart'], $_GET['idcart'], 1);
-            } else {
-                $_SESSION['mycart'] = [];
-            }
-            header('Location: index.php?act=addtocart');
-            break;
-        case "bill":
-            include "./view/cart/bill.php";
-            break;
-        case "mybill":
-            include "./view/cart/mybill.php";
-            break;
-        case "changestatusbill":
-            include "./view/cart/changestatus.php";
-            break;
-        case "billcomfirm":
-            if (isset($_POST['dongydathang'])) {
-                $name = $_POST['name'];
-                $address = $_POST['address'];
-                $email = $_POST['email'];
-                $tel = $_POST['tel'];
-                $pttt = $_POST['pttt'];
-                $ngaydathang = date('d/m/Y');
-                $tongdonhang = tongdonhang();
-                $idbill = insert_bill($name, $email, $address, $tel, $pttt, $ngaydathang, $tongdonhang);
-                foreach ($_SESSION['mycart'] as $cart) {
-                    insert_cart($_SESSION['user']['id'], $cart[0], $cart[2], $cart[1], $cart[3], $cart[4], $cart[5], $idbill);
-                }
-            }
-            $bill = loadone_bill($idbill);
-            $listbill = loadall_cart($idbill);
-            unset($_SESSION['mycart']);
-            include "./view/cart/billcomfirm.php";
-            break;
-        case "sanphamct":
-            if (isset($_GET['id']) && $_GET['id'] > 0) {
-                $sanpham = loadOneSp($_GET['id']);
-            }
-            include "view/chitietsanpham.php";
-            break;
-        case "login":
-            if (isset($_POST['dangnhap']) && ($_POST['dangnhap'])) {
-                $user = $_POST['username'];
-                $pass = $_POST['password'];
-                $checkuser = checkuser($user, $pass);
-                if (is_array($checkuser)) {
-                    $_SESSION['user'] = $checkuser;
-                    header('location: index.php');
-                } else {
-                    $thongbao = "tài khoản không tồn tại. Vui lòng kiểm tra hoặc đăng ký";
-                }
-            }
-            include "view/login.php";
-            break;
-        case "register":
-            if (isset($_POST['dangky']) && $_POST['dangky']) {
-                $user = $_POST['username'];
-                $pass = $_POST['password'];
-                $email = $_POST['email'];
-                $sdt = $_POST['tel'];
-                $address = $_POST['address'];
-                $role = $_POST['role'];
-                insert_taikhoan($user, $pass, $email, $address, $tel, $role);
-            }
-            $listdanhmuc = loadAllDm();
-            include "./view/register.php";
-            break;
-        case 'edittk':
-            if (isset($_POST['capnhap']) && ($_POST['capnhap'])) {
-                $user = $_POST['user'];
-                $pass = $_POST['pass'];
-                $email = $_POST['email'];
-                $address = $_POST['address'];
-                $tel = $_POST['tel'];
-                $id = $_POST['id'];
-                update_taikhoan($id, $user, $pass, $email, $address, $tel);
-                $_SESSION['user'] = checkuser($user, $pass);
-                header('location: index.php?act=edit_taikhoan');
-            }
-            include "view/edittk.php";
-            break;
-        case 'quenmk':
-            if (isset($_POST['khoiphuc']) && ($_POST['khoiphuc'])) {
-                $email = $_POST['email'];
-                $checkemail = checkemail($email);
-                if (is_array($checkemail)) {
-                    $thongbao = "mật khẩu của bạn là : " . $checkemail['pass'];
-                } else {
-                    $thongbao = "email này không tồn tại !";
-                }
-            }
-            include "view/quenmk.php";
-            break;
-        default:
-            if (isset($_POST['listok']) && ($_POST['listok'])) {
-                $kym = $_POST['kym'];
-                $iddm = $_POST['iddm'];
-            } else {
-                $kym = "";
-                $iddm = 0;
-            };
-            $listdanhmuc = loadAllDm();
-            $listsanpham = loadAllSp($kym, $iddm);
-            include "view/home.php";
-            break;
-    }
-} else {
-    if (isset($_POST['listok']) && ($_POST['listok'])) {
-        $kym = $_POST['kym'];
-        $iddm = $_POST['iddm'];
-    } else {
-        $kym = "";
-        $iddm = 0;
-    };
-    $listdanhmuc = loadAllDm();
-    $listsanpham = loadAllSp($kym, $iddm);
-    include "view/home.php";
-}
-
-include "view/footer.php";
+date_default_timezone_set('Asia/Ho_Chi_Minh');
+require "thuvien/database.php";
+require "thuvien/functions.php";
+require "thuvien/users.php";
+require "thuvien/format.php";
+require "thuvien/url.php";
 ?>
+<?php
+$mod = !empty($_GET['mod']) ? $_GET['mod'] : "home";
+$act = !empty($_GET['act']) ? $_GET['act'] : "main";
+$path = "modules/{$mod}/views/{$act}.php";
+if (file_exists($path)) {
+    require $path;
+} else {
+    require "layout/404.php";
+}
+?>
+<!-- 
+    Logic: $path = "modules/{$mod}/views/{$act}.php";
+    Ví dụ: ?mod=users&act=account
+    biến $mod có tên là gì -> thư mục sẽ là tên đó. Ví dụ trên, biến mod có giá trị là users -> sẽ đi từ modules/users
+    biến $act có tên là gì -> thư mục sẽ là tên đó. Ví dụ trên, biến act có giá trị là account -> sẽ đi từ modules/users/views/account.php
+    Trong mỗi folder ở trong `modules` sẽ có 3 folder con là models, views, controllers. Các file con trong folder views nếu có xử lý gì (thêm, xoá, sửa) thì sẽ require theo đường dẫn modules/$mod/controllers/tênFile.php. Trong file ở folder controllers, muốn làm việc với database thì require theo định dạng modules/$mod/models/tênFile.php. Áp dụng cho tất cả.
+    Trong folder `thuvien`, là nơi chưa các file hỗ trợ cho việc xử lý. Khi cần chỉ việc require nó vào.
+    Trong folder `layout`, là nơi chưa các file như header, footer. Giúp tái sử dụng.
+    Trong folder `assets`, là nơi chưa các file style css, js,...
+    Trong folder `admin`, nó cũng có các folder như ở user. Nên mình không giải thích gì thêm
+ -->
