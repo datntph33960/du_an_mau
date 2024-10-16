@@ -49,9 +49,10 @@ if (isset($_POST['editOrder'])) {
                       <div class="mb-3">
                         <label for="status" class="form-label">Trạng thái</label>
                         <select name="status" id="status" class="form-control">
-                          <option value="1" <?php echo $select = (int)$orderInfo['trang_thai'] === 1 ? "selected" : ""; ?>>Chưa thanh toán</option>
-                          <option value="2" <?php echo $select = (int)$orderInfo['trang_thai'] === 2 ? "selected" : ""; ?>>Đã thanh toán</option>
-                          <option value="3" <?php echo $select = (int)$orderInfo['trang_thai'] === 3 ? "selected" : ""; ?>>Đã nhận hàng</option>
+                          <option value="1" <?php echo $select = (int)$orderInfo['trang_thai'] === 1 ? "selected" : ""; ?>>Chờ Xử Lí ... </option>
+                          <option value="2" <?php echo $select = (int)$orderInfo['trang_thai'] === 2 ? "selected" : ""; ?>>Chờ Lấy Hàng ...</option>
+                          <option value="3" <?php echo $select = (int)$orderInfo['trang_thai'] === 3 ? "selected" : ""; ?>>Đang Giao Hàng ... </option>
+                          <option value="4" <?php echo $select = (int)$orderInfo['trang_thai'] === 4 ? "selected" : ""; ?>>Đã nhận hàng ✓ </option>
                         </select>
                         <?php echo form_error("status") ?>
                       </div>
@@ -60,7 +61,9 @@ if (isset($_POST['editOrder'])) {
                         <?php echo notify("update") ?>
                       </div>
                       <div class="mb-3">
-                        <input type="submit" value="Cập nhật" class="btn btn-primary" name="editOrder">
+                        <input type="submit" value="Cập nhật" class="btn btn-primary" name="editOrder"><br><br>
+                        <div><a  class="btn btn-primary" href="?mod=orders&act=main">Quay Lại </a></div>
+                        
                       </div>
                     <?php } ?>
                   </form>

@@ -118,6 +118,7 @@ if (!empty(setNameForUser())) {
             <th>Địa Chỉ</th>
             <th>Trạng thái</th>
             <th>Ngày đặt hàng</th>
+            <th></th>
             
           </tr>
         </thead>
@@ -136,7 +137,9 @@ if (!empty(setNameForUser())) {
                 <td><?php echo $item['dia_chi'] ?></td>
                 <td><?php echo setStatusPayment($item['trang_thai']) ?></td>
                 <td><?php echo $item['tao_ngay'] ?></td>
-                
+                <td>
+                  <button type="submit" class="btn btn-danger" name="" value="">Hủy</button>
+                </td>
               </tr>
             <?php  }
           } else {
